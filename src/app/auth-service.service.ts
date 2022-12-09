@@ -1,7 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {loginUrl, registerUrl, getOrdersUrl, getUserPortfolioUrl, getStatisticsUrl} from 'src/constants/environment';
+import {
+  loginUrl,
+  registerUrl,
+  getOrdersUrl,
+  getUserPortfolioUrl,
+  getStatisticsUrl,
+  getOrderUrl, getUserUrl
+} from 'src/constants/environment';
+import {Statistic} from "./model/Statistic";
+import {OrderData} from "./model/OrderData";
+import {User} from "./model/User";
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +35,18 @@ export class AuthServiceService {
     return this.http.get(`${getOrdersUrl}`);
   }
 
-  getStatistics(){
-    return this.http.get(`${getStatisticsUrl}`)
+  getStatistics() : Observable<Statistic>{
+    return this.http.get<Statistic>(`${getStatisticsUrl}`)
   }
+
+  getOrders() : Observable<OrderData>{
+    return this.http.get<OrderData>(`${getOrderUrl}`)
+  }
+
+  getUsers() : Observable<User>{
+    return this.http.get<User>(`${getUserUrl}`)
+  }
+
 
   tradeStock(){
     console.log("In Trade Stock");
