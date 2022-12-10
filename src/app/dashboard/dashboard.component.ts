@@ -51,11 +51,4 @@ export class DashboardComponent {
     })
   }
 
-  getUsers(){
-    this.reporting.getUsers().subscribe(response => {
-
-    })
-  }
-
-
 }

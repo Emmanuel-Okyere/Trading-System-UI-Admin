@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Statistic} from "../model/Statistic";
-import {getOrderUrl, getStatisticsUrl, getUserUrl} from "../../constants/environment";
+import {getOrderUrl, getPortfolioUrl, getStatisticsUrl, getUserUrl} from "../../constants/environment";
 import {OrderData} from "../model/OrderData";
 import {User} from "../model/User";
 import {HttpClient} from "@angular/common/http";
+import {Portfolio} from "../model/Portfolio";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class ReportingServiceService {
 
   getUsers() : Observable<User>{
     return this.http.get<User>(`${getUserUrl}`)
+  }
+
+  getPortfolios() : Observable<Portfolio>{
+    return this.http.get<Portfolio>(`${getPortfolioUrl}`)
   }
 }

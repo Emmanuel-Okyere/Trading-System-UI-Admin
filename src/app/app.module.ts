@@ -15,6 +15,7 @@ import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTableModule} from "@angular/material/table";
 import { UsersComponent } from './users/users.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsersComponent } from './users/users.component';
     ProfileComponent,
     OrdersComponent,
     ModalComponent,
-    UsersComponent
+    UsersComponent,
+    PortfolioComponent
   ],
     imports: [
         BrowserModule,

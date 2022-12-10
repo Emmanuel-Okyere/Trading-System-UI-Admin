@@ -459,37 +459,31 @@
               <!-- Id Column -->
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+                <td mat-cell *matCellDef="let portfolio"> {{portfolio.id}} </td>
+              </ng-container>
+
+              <!-- Id Column -->
+              <ng-container matColumnDef="ticker">
+                <th mat-header-cell *matHeaderCellDef> Ticker </th>
+                <td mat-cell *matCellDef="let portfolio"> {{portfolio.ticker}} </td>
               </ng-container>
 
               <!-- Product Column -->
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+                <td mat-cell *matCellDef="let portfolio"> {{portfolio.users.name}} </td>
               </ng-container>
 
               <!-- Quantity Column -->
               <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> Email </th>
-                <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+                <td mat-cell *matCellDef="let portfolio"> {{portfolio.users.email}} </td>
               </ng-container>
 
               <!-- Side Column -->
               <ng-container matColumnDef="balance">
                 <th mat-header-cell *matHeaderCellDef> Balance (USD) </th>
-                <td mat-cell *matCellDef="let user"> {{user.balance}} </td>
-              </ng-container>
-
-              <!-- Side Column -->
-              <ng-container matColumnDef="createdAt">
-                <th mat-header-cell *matHeaderCellDef> Created At </th>
-                <td mat-cell *matCellDef="let user"> {{user.createdAt}} </td>
-              </ng-container>
-
-              <!-- Side Column -->
-              <ng-container matColumnDef="updatedAt">
-                <th mat-header-cell *matHeaderCellDef> Updated At </th>
-                <td mat-cell *matCellDef="let user"> {{user.updatedAt}} </td>
+                <td mat-cell *matCellDef="let portfolio"> {{portfolio.users.balance}} </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
