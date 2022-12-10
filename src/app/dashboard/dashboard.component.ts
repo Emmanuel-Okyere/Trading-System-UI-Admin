@@ -5,6 +5,7 @@ import {map, Observable} from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Datum, OrderData} from "../model/OrderData";
 import {UserList} from "../model/User";
+import {ReportingServiceService} from "../service/reporting-service.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -21,11 +22,11 @@ export class DashboardComponent {
   order: Datum[] = [];
   user: any[] = [];
 
-  displayedColumns: string[] = ['id', 'product', 'side', 'quantity', 'type', 'price', 'orderId', 'ticker', 'name', 'balance', 'email', 'createdAt'];
+  displayedColumns: string[] = ['id', 'product', 'side', 'quantity', 'type', 'price', 'orderStatus', 'orderId', 'ticker', 'name', 'balance', 'email', 'createdAt'];
   dataSource: any;
 
 
-  constructor(private authService: AuthServiceService){}
+  constructor(private reporting: ReportingServiceService){}
 
   ngOnInit() {
     this.getStatistics();
@@ -33,7 +34,7 @@ export class DashboardComponent {
   }
 
   getStatistics(){
-    this.authService.getStatistics().subscribe(response => {
+    this.reporting.getStatistics().subscribe(response => {
      this.totalUsers = response.data.users;
      this.totalSystemLog = response.data.systemLog;
      this.totalOrders = response.data.orders;
@@ -44,14 +45,14 @@ export class DashboardComponent {
   }
 
   getOrders(){
-    this.authService.getOrders().subscribe(response => {
+    this.reporting.getOrders().subscribe(response => {
       this.order = response.data;
       this.dataSource = response.data;
     })
   }
 
   getUsers(){
-    this.authService.getUsers().subscribe(response => {
+    this.reporting.getUsers().subscribe(response => {
 
     })
   }
