@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import {UsersComponent} from "./users/users.component";
 import {PortfolioComponent} from "./portfolio/portfolio.component";
+import {SystemLogComponent} from "./system-log/system-log.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'dashboard', component: DashboardComponent},
   {path:'users', component: UsersComponent},
   {path:'user-portfolios', component: PortfolioComponent},
+  {path:'system-logs', component: SystemLogComponent},
 ];
 
 @NgModule({

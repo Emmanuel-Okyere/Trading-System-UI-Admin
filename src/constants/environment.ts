@@ -9,3 +9,4 @@ export const getStatisticsUrl = `http://localhost:8081/api/v1/admin/reports/stat
 export const getOrderUrl = `http://localhost:8081/api/v1/admin/reports/orders`;
 export const getUserUrl = `http://localhost:8081/api/v1/admin/reports/users`;
 export const getPortfolioUrl = `http://localhost:8081/api/v1/admin/reports/portfolio`;
+export const getStstemLogUrl = `http://localhost:8081/api/v1/admin/reports/logs`;

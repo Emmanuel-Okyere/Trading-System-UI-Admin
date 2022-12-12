@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatTableModule} from "@angular/material/table";
 import { UsersComponent } from './users/users.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { SystemLogComponent } from './system-log/system-log.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     OrdersComponent,
     ModalComponent,
     UsersComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    SystemLogComponent
   ],
     imports: [
         BrowserModule,

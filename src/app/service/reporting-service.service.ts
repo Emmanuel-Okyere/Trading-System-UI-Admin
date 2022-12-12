@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Statistic} from "../model/Statistic";
-import {getOrderUrl, getPortfolioUrl, getStatisticsUrl, getUserUrl} from "../../constants/environment";
+import {getOrderUrl, getPortfolioUrl, getStatisticsUrl, getStstemLogUrl, getUserUrl} from "../../constants/environment";
 import {OrderData} from "../model/OrderData";
 import {User} from "../model/User";
 import {HttpClient} from "@angular/common/http";
 import {Portfolio} from "../model/Portfolio";
+import {SystemLog} from "../model/SystemLog";
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class ReportingServiceService {
 
   getPortfolios() : Observable<Portfolio>{
     return this.http.get<Portfolio>(`${getPortfolioUrl}`)
+  }
+
+  getSystemLog() : Observable<SystemLog>{
+    return this.http.get<SystemLog>(`${getStstemLogUrl}`)
   }
 }
