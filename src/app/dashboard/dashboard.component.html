@@ -649,7 +649,14 @@
                   <!-- Status Column -->
                   <ng-container matColumnDef="orderStatus">
                     <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let order"> {{order.orderStatus}} </td>
+                    <td mat-cell *matCellDef="let order">
+                      <span *ngIf="order.orderStatus == 'open'" class="mb-3 mt-3 text-xs badge badge-sm bg-gradient-success">
+                        {{order.orderStatus}}
+                      </span>
+                      <span *ngIf="order.orderStatus == 'close'" class="mb-3 mt-3 text-xs badge badge-sm bg-gradient-secondary">
+                        {{order.orderStatus}}
+                      </span>
+                       </td>
                   </ng-container>
 
                   <!-- Side Column -->
