@@ -1,10 +1,4 @@
 export interface Portfolio {
-  status:  string;
-  message: string;
-  data:    Datum[];
-}
-
-export interface Datum {
   ticker: string;
   users:  Users;
   id:     number;
@@ -22,12 +16,12 @@ export interface Users {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toPortfolio(json: string): Portfolio {
-    return cast(JSON.parse(json), r("Portfolio"));
+  public static toPortfolio(json: string): Portfolio[] {
+    return cast(JSON.parse(json), a(r("Portfolio")));
   }
 
-  public static portfolioToJson(value: Portfolio): string {
-    return JSON.stringify(uncast(value, r("Portfolio")), null, 2);
+  public static portfolioToJson(value: Portfolio[]): string {
+    return JSON.stringify(uncast(value, a(r("Portfolio"))), null, 2);
   }
 }
 
@@ -165,11 +159,6 @@ function r(name: string) {
 
 const typeMap: any = {
   "Portfolio": o([
-    { json: "status", js: "status", typ: "" },
-    { json: "message", js: "message", typ: "" },
-    { json: "data", js: "data", typ: a(r("Datum")) },
-  ], false),
-  "Datum": o([
     { json: "ticker", js: "ticker", typ: "" },
     { json: "users", js: "users", typ: r("Users") },
     { json: "id", js: "id", typ: 0 },
@@ -177,7 +166,7 @@ const typeMap: any = {
   "Users": o([
     { json: "name", js: "name", typ: "" },
     { json: "email", js: "email", typ: "" },
-    { json: "balance", js: "balance", typ: 0 },
+    { json: "balance", js: "balance", typ: 3.14 },
     { json: "createdAt", js: "createdAt", typ: Date },
     { json: "updatedAt", js: "updatedAt", typ: Date },
     { json: "id", js: "id", typ: 0 },

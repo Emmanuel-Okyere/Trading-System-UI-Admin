@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ReportingServiceService} from "../service/reporting-service.service";
 import {SystemLog} from "../model/SystemLog";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-system-log',
@@ -18,6 +19,12 @@ export class SystemLogComponent {
 
   ngOnInit() {
     this.getSystemLogs();
+  }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   getSystemLogs(){

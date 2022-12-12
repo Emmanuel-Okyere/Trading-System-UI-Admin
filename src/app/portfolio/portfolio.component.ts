@@ -10,7 +10,7 @@ export class PortfolioComponent {
 
   displayedColumns: String [] = ['id', 'ticker', 'name', 'email', 'balance'];
   dataSource: any;
-  portfolio: any[] = []
+  portfolio: any;
 
   constructor(private reportingService: ReportingServiceService) {
   }
@@ -22,8 +22,8 @@ export class PortfolioComponent {
   getPortfolios(){
     this.reportingService.getPortfolios().subscribe(
       response => {
-        this.portfolio = response.data;
-        this.dataSource = response.data;
+        this.portfolio = response;
+        this.dataSource = response;
       }
     )
   }

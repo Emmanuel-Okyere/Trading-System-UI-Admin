@@ -1,10 +1,4 @@
 import { Component } from '@angular/core';
-import {AuthServiceService} from "../auth-service.service";
-import {Statistic} from "../model/Statistic";
-import {map, Observable} from "rxjs";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Datum, OrderData} from "../model/OrderData";
-import {UserList} from "../model/User";
 import {ReportingServiceService} from "../service/reporting-service.service";
 
 @Component({
@@ -19,7 +13,7 @@ export class DashboardComponent {
   totalSellOrders: Number = 0;
   totalOrders: Number = 0;
   totalBuyOrders: Number = 0;
-  order: Datum[] = [];
+  order: any = [];
   user: any[] = [];
 
   displayedColumns: string[] = ['id', 'product', 'side', 'quantity', 'type', 'price', 'orderStatus', 'orderId', 'ticker', 'name', 'balance', 'email', 'createdAt'];
@@ -46,8 +40,8 @@ export class DashboardComponent {
 
   getOrders(){
     this.reporting.getOrders().subscribe(response => {
-      this.order = response.data;
-      this.dataSource = response.data;
+      this.order = response;
+      this.dataSource = response;
     })
   }
 

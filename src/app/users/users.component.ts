@@ -10,7 +10,7 @@ export class UsersComponent {
 
   displayedColumns: String [] = ['id', 'name', 'email', 'balance', 'createdAt', 'updatedAt'];
   dataSource: any;
-  user: any[] = []
+  user: any;
 
   constructor(private reportingService: ReportingServiceService) {
   }
@@ -22,9 +22,8 @@ export class UsersComponent {
   getUsers(){
     this.reportingService.getUsers().subscribe(
       response => {
-        this.user = response.data;
-        this.dataSource = response.data;
-        console.log(response);
+        this.user = response;
+        this.dataSource = response;
       }
     )
   }

@@ -17,6 +17,7 @@ import {MatTableModule} from "@angular/material/table";
 import { UsersComponent } from './users/users.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SystemLogComponent } from './system-log/system-log.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SystemLogComponent } from './system-log/system-log.component';
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule,
-        MatTableModule
+        MatTableModule,
+        MatPaginatorModule
     ],
   providers: [],
   bootstrap: [AppComponent]

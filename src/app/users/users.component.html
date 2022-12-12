@@ -77,69 +77,7 @@
       opacity: 0 !important;
     }
   </style>
-  <script>
-    (function (a, s, y, n, c, h, i, d, e) {
-      s.className += " " + y;
-      h.start = 1 * new Date();
-      h.end = i = function () {
-        s.className = s.className.replace(RegExp(" ?" + y), "");
-      };
-      (a[n] = a[n] || []).hide = h;
-      setTimeout(function () {
-        i();
-        h.end = null;
-      }, c);
-      h.timeout = c;
-    })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
-      "GTM-K9BGS8K": true,
-    });
-  </script>
 
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i["GoogleAnalyticsObject"] = r;
-      (i[r] =
-        i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        }),
-        (i[r].l = 1 * new Date());
-      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m);
-    })(
-      window,
-      document,
-      "script",
-      "https://www.google-analytics.com/analytics.js",
-      "ga"
-    );
-    ga("create", "UA-46172202-22", "auto", {
-      allowLinker: true,
-    });
-    ga("set", "anonymizeIp", true);
-    ga("require", "GTM-K9BGS8K");
-    ga("require", "displayfeatures");
-    ga("require", "linker");
-    ga("linker:autoLink", ["2checkout.com", "avangate.com"]);
-  </script>
-
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        "gtm.start": new Date().getTime(),
-        event: "gtm.js",
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-NKDMSK6");
-  </script>
 </head>
 <body class="g-sidenav-show bg-gray-100">
 <aside
@@ -150,14 +88,12 @@
     <i
       class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
       aria-hidden="true"
-      id="iconSidenav"
-    ></i>
+      id="iconSidenav"></i>
     <a class="navbar-brand m-0" target="_blank">
       <img
         src="https://demos.creative-tim.com/soft-ui-dashboard/assets/img/logo-ct-dark.png"
         class="navbar-brand-img h-100"
-        alt="main_logo"
-      />
+        alt="main_logo"/>
       <span class="ms-1 font-weight-bold">Trading System Admin</span>
     </a>
   </div>
@@ -165,7 +101,7 @@
   <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" routerLink="/dashboard">
+        <a class="nav-link" routerLink="/dashboard">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
           >
@@ -209,7 +145,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/orders">
+        <a class="nav-link" routerLink="/market-data">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
           >
@@ -256,7 +192,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="" routerLink="/users">
+        <a class="nav-link active" href="" routerLink="/users">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
           >
