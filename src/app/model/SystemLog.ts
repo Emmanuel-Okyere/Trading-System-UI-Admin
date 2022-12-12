@@ -1,25 +1,15 @@
 export interface SystemLog {
-  status:  string;
-  message: string;
-  data:    Datum[];
-}
-
-export interface Datum {
   id:          number;
   title:       string;
-  event:       Event;
+  event:       string;
   description: string;
   service:     Service;
   createdAt:   Date;
   updatedAt:   Date;
 }
 
-export enum Event {
-  SystemTriggered = "system triggered",
-  UserTriggered = "user triggered",
-}
-
 export enum Service {
+  MarketData = "market-data",
   MarketDataProcessing = "market data processing",
   OrderProcessing = "Order Processing",
 }
@@ -27,12 +17,12 @@ export enum Service {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toSystemLog(json: string): SystemLog {
-    return cast(JSON.parse(json), r("SystemLog"));
+  public static toSystemLog(json: string): SystemLog[] {
+    return cast(JSON.parse(json), a(r("SystemLog")));
   }
 
-  public static systemLogToJson(value: SystemLog): string {
-    return JSON.stringify(uncast(value, r("SystemLog")), null, 2);
+  public static systemLogToJson(value: SystemLog[]): string {
+    return JSON.stringify(uncast(value, a(r("SystemLog"))), null, 2);
   }
 }
 
@@ -170,24 +160,16 @@ function r(name: string) {
 
 const typeMap: any = {
   "SystemLog": o([
-    { json: "status", js: "status", typ: "" },
-    { json: "message", js: "message", typ: "" },
-    { json: "data", js: "data", typ: a(r("Datum")) },
-  ], false),
-  "Datum": o([
     { json: "id", js: "id", typ: 0 },
     { json: "title", js: "title", typ: "" },
-    { json: "event", js: "event", typ: r("Event") },
+    { json: "event", js: "event", typ: "" },
     { json: "description", js: "description", typ: "" },
     { json: "service", js: "service", typ: r("Service") },
     { json: "createdAt", js: "createdAt", typ: Date },
     { json: "updatedAt", js: "updatedAt", typ: Date },
   ], false),
-  "Event": [
-    "system triggered",
-    "user triggered",
-  ],
   "Service": [
+    "market-data",
     "market data processing",
     "Order Processing",
   ],

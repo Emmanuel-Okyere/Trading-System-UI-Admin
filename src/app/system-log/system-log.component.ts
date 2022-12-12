@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ReportingServiceService} from "../service/reporting-service.service";
+import {SystemLog} from "../model/SystemLog";
 
 @Component({
   selector: 'app-system-log',
@@ -10,7 +11,7 @@ export class SystemLogComponent {
 
   displayedColumns: String [] = ['id', 'title', 'service', 'event', 'description', 'createdAt', 'updatedAt'];
   dataSource: any;
-  log: any[] = []
+  log: any;
 
   constructor(private reportingService: ReportingServiceService) {
   }
@@ -22,8 +23,8 @@ export class SystemLogComponent {
   getSystemLogs(){
     this.reportingService.getSystemLog().subscribe(
       response => {
-        this.log = response.data;
-        this.dataSource = response.data;
+        this.log = response;
+        this.dataSource = response;
       }
     )
   }
