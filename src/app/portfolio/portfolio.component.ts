@@ -8,7 +8,7 @@ import {ReportingServiceService} from "../service/reporting-service.service";
 })
 export class PortfolioComponent {
 
-  displayedColumns: String [] = ['id', 'ticker', 'name', 'email', 'balance'];
+  displayedColumns: String [] = ['id', 'ticker', 'quantity', 'name', 'email', 'balance'];
   dataSource: any;
   portfolio: any;
 

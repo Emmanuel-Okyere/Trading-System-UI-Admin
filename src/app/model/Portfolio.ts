@@ -1,7 +1,8 @@
 export interface Portfolio {
-  ticker: string;
-  users:  Users;
-  id:     number;
+  ticker:   string;
+  quantity: number;
+  users:    Users;
+  id:       number;
 }
 
 export interface Users {
@@ -160,6 +161,7 @@ function r(name: string) {
 const typeMap: any = {
   "Portfolio": o([
     { json: "ticker", js: "ticker", typ: "" },
+    { json: "quantity", js: "quantity", typ: 0 },
     { json: "users", js: "users", typ: r("Users") },
     { json: "id", js: "id", typ: 0 },
   ], false),
