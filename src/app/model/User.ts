@@ -1,19 +1,4 @@
-// To parse this data:
-//
-//   import { Convert, User } from "./file";
-//
-//   const user = Convert.toUser(json);
-//
-// These functions will throw an error if the JSON doesn't
-// match the expected interface, even if the JSON is valid.
-
 export interface User {
-  data:    UserList[];
-  message: string;
-  status:  string;
-}
-
-export interface UserList {
   name:      Name;
   email:     string;
   balance:   number;
@@ -29,12 +14,12 @@ export enum Name {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toUser(json: string): User {
-    return cast(JSON.parse(json), r("User"));
+  public static toUser(json: string): User[] {
+    return cast(JSON.parse(json), a(r("User")));
   }
 
-  public static userToJson(value: User): string {
-    return JSON.stringify(uncast(value, r("User")), null, 2);
+  public static userToJson(value: User[]): string {
+    return JSON.stringify(uncast(value, a(r("User"))), null, 2);
   }
 }
 
@@ -172,11 +157,6 @@ function r(name: string) {
 
 const typeMap: any = {
   "User": o([
-    { json: "data", js: "data", typ: a(r("UserList")) },
-    { json: "message", js: "message", typ: "" },
-    { json: "status", js: "status", typ: "" },
-  ], false),
-  "UserList": o([
     { json: "name", js: "name", typ: r("Name") },
     { json: "email", js: "email", typ: "" },
     { json: "balance", js: "balance", typ: 3.14 },

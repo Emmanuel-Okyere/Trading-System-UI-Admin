@@ -9,7 +9,6 @@ import {
   getStatisticsUrl,
   getOrderUrl, getUserUrl
 } from 'src/constants/environment';
-import {Statistic} from "./model/Statistic";
 import {OrderData} from "./model/OrderData";
 import {User} from "./model/User";
 
@@ -34,19 +33,6 @@ export class AuthServiceService {
     console.log("In Get Orders");
     return this.http.get(`${getOrdersUrl}`);
   }
-
-  getStatistics() : Observable<Statistic>{
-    return this.http.get<Statistic>(`${getStatisticsUrl}`)
-  }
-
-  getOrders() : Observable<OrderData>{
-    return this.http.get<OrderData>(`${getOrderUrl}`)
-  }
-
-  getUsers() : Observable<User>{
-    return this.http.get<User>(`${getUserUrl}`)
-  }
-
 
   tradeStock(){
     console.log("In Trade Stock");

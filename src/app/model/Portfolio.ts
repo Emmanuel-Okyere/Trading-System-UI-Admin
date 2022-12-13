@@ -1,21 +1,8 @@
-export interface OrderData {
-  product:     string;
-  quantity:    number;
-  price:       number;
-  type:        string;
-  side:        string;
-  orderId:     string;
-  orderStatus: string;
-  createdAt:   Date;
-  updatedAt:   Date;
-  portfolio:   Portfolio;
-  id:          number;
-}
-
 export interface Portfolio {
-  ticker: string;
-  users:  Users;
-  id:     number;
+  ticker:   string;
+  quantity: number;
+  users:    Users;
+  id:       number;
 }
 
 export interface Users {
@@ -30,12 +17,12 @@ export interface Users {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toOrderData(json: string): OrderData[] {
-    return cast(JSON.parse(json), a(r("OrderData")));
+  public static toPortfolio(json: string): Portfolio[] {
+    return cast(JSON.parse(json), a(r("Portfolio")));
   }
 
-  public static orderDataToJson(value: OrderData[]): string {
-    return JSON.stringify(uncast(value, a(r("OrderData"))), null, 2);
+  public static portfolioToJson(value: Portfolio[]): string {
+    return JSON.stringify(uncast(value, a(r("Portfolio"))), null, 2);
   }
 }
 
@@ -172,21 +159,9 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  "OrderData": o([
-    { json: "product", js: "product", typ: "" },
-    { json: "quantity", js: "quantity", typ: 0 },
-    { json: "price", js: "price", typ: 3.14 },
-    { json: "type", js: "type", typ: "" },
-    { json: "side", js: "side", typ: "" },
-    { json: "orderId", js: "orderId", typ: "" },
-    { json: "orderStatus", js: "orderStatus", typ: "" },
-    { json: "createdAt", js: "createdAt", typ: Date },
-    { json: "updatedAt", js: "updatedAt", typ: Date },
-    { json: "portfolio", js: "portfolio", typ: r("Portfolio") },
-    { json: "id", js: "id", typ: 0 },
-  ], false),
   "Portfolio": o([
     { json: "ticker", js: "ticker", typ: "" },
+    { json: "quantity", js: "quantity", typ: 0 },
     { json: "users", js: "users", typ: r("Users") },
     { json: "id", js: "id", typ: 0 },
   ], false),

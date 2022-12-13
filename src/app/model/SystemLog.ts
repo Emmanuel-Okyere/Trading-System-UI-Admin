@@ -1,41 +1,28 @@
-export interface OrderData {
-  product:     string;
-  quantity:    number;
-  price:       number;
-  type:        string;
-  side:        string;
-  orderId:     string;
-  orderStatus: string;
+export interface SystemLog {
+  id:          number;
+  title:       string;
+  event:       string;
+  description: string;
+  service:     Service;
   createdAt:   Date;
   updatedAt:   Date;
-  portfolio:   Portfolio;
-  id:          number;
 }
 
-export interface Portfolio {
-  ticker: string;
-  users:  Users;
-  id:     number;
-}
-
-export interface Users {
-  name:      string;
-  email:     string;
-  balance:   number;
-  createdAt: Date;
-  updatedAt: Date;
-  id:        number;
+export enum Service {
+  MarketData = "market-data",
+  MarketDataProcessing = "market data processing",
+  OrderProcessing = "Order Processing",
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toOrderData(json: string): OrderData[] {
-    return cast(JSON.parse(json), a(r("OrderData")));
+  public static toSystemLog(json: string): SystemLog[] {
+    return cast(JSON.parse(json), a(r("SystemLog")));
   }
 
-  public static orderDataToJson(value: OrderData[]): string {
-    return JSON.stringify(uncast(value, a(r("OrderData"))), null, 2);
+  public static systemLogToJson(value: SystemLog[]): string {
+    return JSON.stringify(uncast(value, a(r("SystemLog"))), null, 2);
   }
 }
 
@@ -172,30 +159,18 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  "OrderData": o([
-    { json: "product", js: "product", typ: "" },
-    { json: "quantity", js: "quantity", typ: 0 },
-    { json: "price", js: "price", typ: 3.14 },
-    { json: "type", js: "type", typ: "" },
-    { json: "side", js: "side", typ: "" },
-    { json: "orderId", js: "orderId", typ: "" },
-    { json: "orderStatus", js: "orderStatus", typ: "" },
+  "SystemLog": o([
+    { json: "id", js: "id", typ: 0 },
+    { json: "title", js: "title", typ: "" },
+    { json: "event", js: "event", typ: "" },
+    { json: "description", js: "description", typ: "" },
+    { json: "service", js: "service", typ: r("Service") },
     { json: "createdAt", js: "createdAt", typ: Date },
     { json: "updatedAt", js: "updatedAt", typ: Date },
-    { json: "portfolio", js: "portfolio", typ: r("Portfolio") },
-    { json: "id", js: "id", typ: 0 },
   ], false),
-  "Portfolio": o([
-    { json: "ticker", js: "ticker", typ: "" },
-    { json: "users", js: "users", typ: r("Users") },
-    { json: "id", js: "id", typ: 0 },
-  ], false),
-  "Users": o([
-    { json: "name", js: "name", typ: "" },
-    { json: "email", js: "email", typ: "" },
-    { json: "balance", js: "balance", typ: 3.14 },
-    { json: "createdAt", js: "createdAt", typ: Date },
-    { json: "updatedAt", js: "updatedAt", typ: Date },
-    { json: "id", js: "id", typ: 0 },
-  ], false),
+  "Service": [
+    "market-data",
+    "market data processing",
+    "Order Processing",
+  ],
 };
