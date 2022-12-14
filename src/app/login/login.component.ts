@@ -29,7 +29,14 @@ export class LoginComponent implements OnInit{
         if(result.status == "00"){
           sessionStorage.setItem('userDetails', JSON.stringify(result));
           sessionStorage.setItem('accessToken', result.accessToken);
-          window.location.href = '/dashboard';
+          if(result.data.roles[0] == "ADMIN"){
+            console.log("I am an Admin");
+            window.location.href = '/dashboard';
+          } else {
+            console.log("I am a regular USER");
+            alert("You are not an Admin");
+            window.location.href = '/';
+          }
           // We will redirect the page to go to the dashboard page.
           console.log("We printed");
            console.log(result);
